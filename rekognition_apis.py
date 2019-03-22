@@ -3,10 +3,11 @@ from dotenv import load_dotenv  # DotEnv
 import rtsp  # Cam Protoccol for StreamReader
 from os import getenv  # Get environment variale
 
-
 class RekognitionApis():
 
     def __init__(self):
+        """Instance and Environment variables initialization
+        """
         load_dotenv()  # Load env variables
         self.client = boto3.client(getenv('CLIENT'))
         self.collectionId = getenv('COLLECTION')

@@ -1,15 +1,14 @@
 try:
     import RPi.GPIO as GPIO
 except ModuleNotFoundError:
-    print("Error trying to import RPi.GPIO!")
+    print("Cannot import RPi.GPIO! Is this a Raspberry?")
 from time import sleep
 import boto3
 from dotenv import load_dotenv
 import rtsp
 import os
 
-
-
+#Cargar variales de entorno
 load_dotenv()
 if __name__ == "__main__":
     imageFile='prueba.png'
