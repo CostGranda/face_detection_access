@@ -16,7 +16,7 @@ class RekognitionApis():
         # S3 bucket for indexing the images
         self.bucket = getenv('BUCKET')
         # Minimun percentaje to pass
-        self.threshold = 80
+        self.threshold = 95
         # Amount of faces in API results
         self.maxFaces = 1
 
@@ -145,9 +145,14 @@ class RekognitionApis():
                                                          MaxFaces=self.maxFaces)
 
         faceMatches = response['FaceMatches']
-        print('Matching faces')
-        for match in faceMatches:
-            print('FaceId:' + match['Face']['FaceId'])
-            print('FaceId:' + match['Face']['ExternalImageId'])
-            print('Similarity: ' + "{:.2f}".format(match['Similarity']) + "%")
-            print()
+        external_image_id = ''
+        similarity = 0
+        if not faceMatches:
+            return []
+        else:
+            print('Matching faces')
+            for match in faceMatches:
+                external_image_id =  match['Face']['ExternalImageId']
+                similarity = match['Similarity']
+
+        return [external_image_id, similarity]
