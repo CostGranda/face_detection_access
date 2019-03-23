@@ -16,7 +16,7 @@ class RekognitionApis():
         # S3 bucket for indexing the images
         self.bucket = getenv('BUCKET')
         # Minimun percentaje to pass
-        self.threshold = 99
+        self.threshold = 80
         # Amount of faces in API results
         self.maxFaces = 1
 
@@ -28,9 +28,9 @@ class RekognitionApis():
         Returns:
             None
         """
-        print('Creating collection:' + self.collectionId)
+        print('Creating collection:' + name)
         response = self.client.create_collection(
-            CollectionId=self.collectionId)
+            CollectionId=name)
         # Amazon Resource Name
         print('Collection ARN: ' + response['CollectionArn'])
         # Http response code
@@ -124,7 +124,7 @@ class RekognitionApis():
         Args:
             fileName (str): 
             mode (str): Local image or S3 image.
-        
+
         Returns:
             None
         """
@@ -136,8 +136,8 @@ class RekognitionApis():
                                                              FaceMatchThreshold=self.threshold,
                                                              MaxFaces=self.maxFaces)
         elif mode == 's3':
-            #TODO Get the name of the image on the bucket
-            fileName = '' 
+            # TODO Get the name of the image on the bucket
+            fileName = ''
             response = self.client.search_faces_by_image(CollectionId=self.collectionId,
                                                          Image={'S3Object': {
                                                              'Bucket': self.bucket, 'Name': fileName}},
