@@ -5,4 +5,8 @@ if __name__ == "__main__":
     # client.read().save("prueba.png")
     # client.close()
     lo_rekogn = RekognitionApis()
+    from timeit import default_timer as timer
+    start = timer()
     lo_rekogn.list_faces()
+    end = timer()
+    print("Duration: {}".format(end-start))

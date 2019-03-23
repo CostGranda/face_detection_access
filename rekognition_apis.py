@@ -148,5 +148,6 @@ class RekognitionApis():
         print('Matching faces')
         for match in faceMatches:
             print('FaceId:' + match['Face']['FaceId'])
+            print('FaceId:' + match['Face']['ExternalImageId'])
             print('Similarity: ' + "{:.2f}".format(match['Similarity']) + "%")
             print()
