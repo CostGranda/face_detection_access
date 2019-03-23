@@ -1,6 +1,5 @@
-import boto3  # AWS SDK
-from dotenv import load_dotenv  # DotEnv
-import rtsp  # Cam Protoccol for StreamReader
+from boto3 import client  # AWS SDK
+import settings
 from os import getenv  # Get environment variale
 
 
@@ -9,8 +8,7 @@ class RekognitionApis():
     def __init__(self):
         """Instance and Environment variables initialization
         """
-        load_dotenv()  # Load env variables
-        self.client = boto3.client(getenv('CLIENT'))
+        self.client = client(getenv('CLIENT'))
         # AWS Collection to store metadata
         self.collectionId = getenv('COLLECTION')
         # S3 bucket for indexing the images
