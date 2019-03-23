@@ -1,2 +1,4 @@
-Photos/.DS_Store
-__pycache__/rekognition_apis.cpython-37.pyc
+Photos/
+__pycache__/
+*.jpg
+*.png
