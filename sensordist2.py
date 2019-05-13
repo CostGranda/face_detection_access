@@ -31,6 +31,7 @@ try:
         distance = (elapsed * 34300)/2   #Distancia es igual a tiempo por velocidad partido por 2   D = (T x V)/2
         if distance <=100:
             print("LLAMADO AL METODO")
+            time.sleep(10)
         print(distance)                  #Devolvemos la distancia (en centímetros) por pantalla
         time.sleep(1)                    #Pequeña pausa para no saturar el procesador de la Raspberry
 except KeyboardInterrupt:                #Si el usuario pulsa CONTROL+C...
