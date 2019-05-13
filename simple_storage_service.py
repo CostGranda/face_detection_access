@@ -1,10 +1,11 @@
 import boto3
 import os
+from os import getenv 
 
 class SimpleStorageServicce():
     def __init__(self):
         self.s3 = boto3.resource('s3')
-        self.bucket = 'testambda'
+        self.bucket = getenv('DEV_BUCKET')
         self.image = 'cv2.jpg'
 
     def upload_file(self, faceMatch, bucket='testambda'):
@@ -29,7 +30,7 @@ class SimpleStorageServicce():
         self.s3.meta.client.upload_file(image_name, bucket, image_name)
     
     def __list_files(self, prefix):
-        response = self.s3.meta.client.list_objects_v2(Bucket='facedetectionaccess', Prefix=prefix)
+        response = self.s3.meta.client.list_objects_v2(Bucket=self.bucket, Prefix=prefix)
         if response['KeyCount']:
             return response['Contents']
 

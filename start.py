@@ -8,7 +8,8 @@ if __name__ == "__main__":
     #lo_getF = CaptureFrame()
     #lo_getF.capture()
 
-    a = lo_rekogn.search_by_image(imageFile='cv2.jpg')
-    lo_s3.upload_file(a)
-    
-    print(a)
+    faceMatch = lo_rekogn.search_by_image(imageFile='cv2.jpg')
+    if faceMatch:
+        lo_s3.upload_file(faceMatch)
+
+    print()
