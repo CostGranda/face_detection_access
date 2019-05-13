@@ -1,0 +1,6 @@
+Photos/
+__pycache__/
+*.jpg
+*.png
+.DS_Store
+*.pyc
