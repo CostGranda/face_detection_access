@@ -5,6 +5,10 @@ try:
 except RuntimeError:
     print("Error importing RPi.GPIO!")
 import time                #Importamos time (time.sleep)
+from rekognition_apis import RekognitionApis
+from simple_storage_service import SimpleStorageServicce 
+from get_frame import CaptureFrame
+
 GPIO.setmode(GPIO.BCM)     #Ponemos la placa en modo BCM
 GPIO_TRIGGER = 20          #Usamos el pin GPIO 25 como TRIGGER
 GPIO_ECHO    = 21           #Usamos el pin GPIO 7 como ECHO
@@ -25,6 +29,8 @@ try:
             stop = time.time()           #Guarda el tiempo actual mediante time.time() en otra variable
         elapsed = stop-start             #Obtenemos el tiempo transcurrido entre envío y recepción
         distance = (elapsed * 34300)/2   #Distancia es igual a tiempo por velocidad partido por 2   D = (T x V)/2
+        if distance <=100:
+            print("LLAMADO AL METODO")
         print(distance)                  #Devolvemos la distancia (en centímetros) por pantalla
         time.sleep(1)                    #Pequeña pausa para no saturar el procesador de la Raspberry
 except KeyboardInterrupt:                #Si el usuario pulsa CONTROL+C...
