@@ -6,8 +6,8 @@ except RuntimeError:
     print("Error importing RPi.GPIO!")
 import time                #Importamos time (time.sleep)
 GPIO.setmode(GPIO.BCM)     #Ponemos la placa en modo BCM
-GPIO_TRIGGER = 25          #Usamos el pin GPIO 25 como TRIGGER
-GPIO_ECHO    = 7           #Usamos el pin GPIO 7 como ECHO
+GPIO_TRIGGER = 20          #Usamos el pin GPIO 25 como TRIGGER
+GPIO_ECHO    = 21           #Usamos el pin GPIO 7 como ECHO
 GPIO.setup(GPIO_TRIGGER,GPIO.OUT)  #Configuramos Trigger como salida
 GPIO.setup(GPIO_ECHO,GPIO.IN)      #Configuramos Echo como entrada
 GPIO.output(GPIO_TRIGGER,False)    #Ponemos el pin 25 como LOW

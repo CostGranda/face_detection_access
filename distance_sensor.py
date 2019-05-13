@@ -2,7 +2,7 @@ import time #se necesita para usar las funciones de tiempo
 from subprocess import call #la necesitamos para la interrupcion de teclado
 import RPi.GPIO as GPIO
  
-GPIO.setmode(GPIO.BOARD) #Queremos usar la numeracion de la placa
+GPIO.setmode(GPIO.BCM) #Queremos usar la numeracion de la placa
  
 #Definimos los dos pines del sensor que hemos conectado: Trigger y Echo
 Trig = 20
