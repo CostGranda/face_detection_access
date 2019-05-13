@@ -59,7 +59,7 @@ class RekognitionApis():
                 token = False
 
     def index_faces(self, name, from_n=1, to_n=5, ):
-        """Indexa las imagenes leyendolas de S3 y las almacena en la colleción parametrizada.
+        """Indexa las imagenes leyendolas de S3 y las almacena en la collecion parametrizada.
         Args:
             name (str):   Nombre de la imagen para leer del bucket secuencialmente.
             from_n (int): Valor inicial X para controlar el ciclo, normalmente la primera image (Ex: name_lastname_X.jpg)
@@ -138,7 +138,7 @@ class RekognitionApis():
             fileName = ''
             response = self.client.search_faces_by_image(CollectionId=self.collectionId,
                                                          Image={'S3Object': {
-                                                             'Bucket': self.bucket, 'Name': fileName}},
+                                                             'Bucket': self.bucket, 'Name': str(imageFile)}},
                                                          FaceMatchThreshold=self.threshold,
                                                          MaxFaces=self.maxFaces)
 

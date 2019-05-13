@@ -5,7 +5,7 @@ class SimpleStorageServicce():
     def __init__(self):
         self.s3 = boto3.resource('s3')
         self.bucket = 'testambda'
-        self.image = 'prueba.jpg'
+        self.image = 'cv2.jpg'
 
     def upload_file(self, faceMatch, bucket='testambda'):
         """Upload the taken pic to S3 according to the name convention.
@@ -38,5 +38,5 @@ class SimpleStorageServicce():
         response = self.__list_files(prefix)
         # Key of the last item in bucket
         key = response[-1]['Key']
-        print(key)
+        print("key: ",key)
         return key
