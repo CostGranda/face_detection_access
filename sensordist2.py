@@ -15,8 +15,9 @@ class DistanceSensor():
         self.GPIO_TRIGGER = trigg_pin
         # Usamos el pin GPIO como ECHO
         self.GPIO_ECHO = echo_pin
+        self.setup()
 
-    def setup(self, parameter_list):
+    def setup(self):
         # Ponemos la placa en modo BCM
         GPIO.setmode(GPIO.BCM)
         # Configuramos Trigger como salida
