@@ -8,6 +8,7 @@ import time  # Importamos time (time.sleep)
 from rekognition_apis import RekognitionApis
 from simple_storage_service import SimpleStorageServicce
 from get_frame import CaptureFrame
+from rgb_strip import RGB_Strip
 
 class DistanceSensor():
     def __init__(self, trigg_pin, echo_pin):
@@ -43,14 +44,17 @@ class DistanceSensor():
         return distance
 
 lo_distanceSnsr = DistanceSensor(20, 21)
-
+lo_rgb = RGB_Strip(17,22,24)
 try:
     while True:  # Iniciamos un loop infinito
         distance = lo_distanceSnsr.get_distance()
         if distance <= 100:
             print(distance)
+            lo_rgb.blue_on()
+            time.sleep(3)
+            lo_rgb.blue_off()
             print("LLAMADO AL METODO")
-            time.sleep(2)
+            #time.sleep(2)
         print(distance)  # Devolvemos la distancia (en centímetros) por pantalla
         # Pequeña pausa para no saturar el procesador de la Raspberry
         time.sleep(1)
