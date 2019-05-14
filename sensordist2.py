@@ -48,8 +48,9 @@ try:
     while True:  # Iniciamos un loop infinito
         distance = lo_distanceSnsr.get_distance()
         if distance <= 100:
+            print(distance)
             print("LLAMADO AL METODO")
-            time.sleep(10)
+            time.sleep(2)
         print(distance)  # Devolvemos la distancia (en centímetros) por pantalla
         # Pequeña pausa para no saturar el procesador de la Raspberry
         time.sleep(1)
