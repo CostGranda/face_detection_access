@@ -38,3 +38,6 @@ class DistanceSensor():
         # Distancia es igual a tiempo por velocidad partido por 2   D = (T x V)/2
         distance = (elapsed * 34300)/2
         return distance
+
+    def clean(self):
+        GPIO.cleanup()
