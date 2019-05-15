@@ -6,7 +6,7 @@ class SimpleStorageServicce():
     def __init__(self):
         self.s3 = boto3.resource('s3')
         self.bucket = getenv('DEV_BUCKET')
-        self.image = 'cv2.jpg'
+        self.image = getenv('SAVED_IMAGE')
 
     def upload_file(self, faceMatch, bucket='testambda'):
         """Upload the taken pic to S3 according to the name convention.
