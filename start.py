@@ -17,7 +17,7 @@ if __name__ == "__main__":
     # Clase de la camara
     lo_getF = CaptureFrame()
     # Clase de distancia
-    lo_distanceSnsr = DistanceSensor()
+    lo_distanceSnsr = DistanceSensor(20, 21)
     # Clase rgb strip 
     lo_rgb = RGB_Strip()
 
