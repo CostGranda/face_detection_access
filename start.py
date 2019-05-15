@@ -10,12 +10,6 @@ from time import sleep
 
 
 if __name__ == "__main__":
-    # Clase de reconocimiento
-    lo_rekogn = RekognitionApis()
-    # Clase de S3 para subir la foto
-    lo_s3 = SimpleStorageServicce()
-    # Clase de la camara
-    lo_getF = CaptureFrame()
     # Clase de distancia
     lo_distanceSnsr = DistanceSensor(20, 21)
     # Clase rgb strip 
@@ -25,13 +19,19 @@ if __name__ == "__main__":
         while True:  # Iniciamos un loop infinito
             distance = lo_distanceSnsr.get_distance()
             if distance <= 100:
+                # Clase de la camara
+                lo_getF = CaptureFrame()
                 ret = lo_getF.get_image()
                 print(distance)
                 if ret:
+                    # Clase de reconocimiento
+                    lo_rekogn = RekognitionApis()
                     # Search for similarity score
                     faceMatch = lo_rekogn.search_by_image(imageFile=getenv('SAVED_IMAGE'))
                     if faceMatch:
                         lo_rgb.green_on()
+                        # Clase de S3 para subir la foto
+                        lo_s3 = SimpleStorageServicce()
                         lo_s3.upload_file(faceMatch)
                         sleep(5)
                         lo_rgb.green_off()
