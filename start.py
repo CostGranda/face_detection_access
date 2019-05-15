@@ -1,7 +1,7 @@
 from rekognition_apis import RekognitionApis
 from simple_storage_service import SimpleStorageServicce 
 from get_frame import CaptureFrame
-from sensor_dist import DistanceSensor()
+from sensor_dist import DistanceSensor
 from rgb_strip import RGB_Strip
 
 import settings
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     # Clase de distancia
     lo_distanceSnsr = DistanceSensor(20, 21)
     # Clase rgb strip 
-    lo_rgb = RGB_Strip()
+    lo_rgb = RGB_Strip(17, 22, 24)
 
     try:
         while True:  # Iniciamos un loop infinito
@@ -39,8 +39,9 @@ if __name__ == "__main__":
                         lo_rgb.red_on()
                         sleep(3)
                         lo_rgb.red_off()
+            print(distance)
             # Pequeña pausa para no saturar el procesador de la Raspberry
-            time.sleep(1)
+            sleep(1)
     except KeyboardInterrupt:  # Si el usuario pulsa CONTROL+C...
         print("Quitting...")  # Avisamos del cierre al usuario
         lo_distanceSnsr.clean()  # Limpiamos los pines GPIO y salimos
