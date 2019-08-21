@@ -13,12 +13,12 @@ if __name__ == "__main__":
     # Clase de distancia
     lo_distanceSnsr = DistanceSensor(20, 21)
     # Clase rgb strip 
-    lo_rgb = RGB_Strip(17, 22, 24)
+    lo_rgb = RGB_Strip(27, 22, 24)
 
     try:
         while True:  # Iniciamos un loop infinito
             distance = lo_distanceSnsr.get_distance()
-            if distance <= 100:
+            if distance <= 90:
                 # Clase de la camara
                 lo_getF = CaptureFrame()
                 ret = lo_getF.get_image()
@@ -33,12 +33,12 @@ if __name__ == "__main__":
                         # Clase de S3 para subir la foto
                         lo_s3 = SimpleStorageServicce()
                         lo_s3.upload_file(faceMatch)
-                        sleep(5)
+                        #sleep(5)
                         lo_rgb.green_off()
                     else:
-                        lo_rgb.red_on()
+                        lo_rgb.blue_on()
                         sleep(3)
-                        lo_rgb.red_off()
+                        lo_rgb.blue_off()
             print(distance)
             # Pequeña pausa para no saturar el procesador de la Raspberry
             sleep(1)
