@@ -128,11 +128,14 @@ class RekognitionApis():
         """
         if mode == 'local':
             with open(imageFile, 'rb') as image:
-                response = self.client.search_faces_by_image(CollectionId=self.collectionId,
-                                                             Image={
-                                                                 'Bytes': image.read()},
-                                                             FaceMatchThreshold=self.threshold,
-                                                             MaxFaces=self.maxFaces)
+                try:
+                    response = self.client.search_faces_by_image(CollectionId=self.collectionId,
+                                                                Image={
+                                                                    'Bytes': image.read()},
+                                                                FaceMatchThreshold=self.threshold,
+                                                                MaxFaces=self.maxFaces)
+                except InvalidParameterException:
+                    print("No hay rostro")
         elif mode == 's3':
             # TODO Get the name of the image on the bucket
             fileName = ''
