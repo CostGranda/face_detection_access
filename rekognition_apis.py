@@ -14,7 +14,7 @@ class RekognitionApis():
         # S3 bucket for indexing the images
         self.bucket = getenv('BUCKET')
         # Minimun percentaje to pass
-        self.threshold = 98
+        self.threshold = 95
         # Amount of faces in API results
         self.maxFaces = 1
 
