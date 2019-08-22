@@ -29,7 +29,10 @@ if __name__ == "__main__":
                     # Clase de reconocimiento
                     lo_rekogn = RekognitionApis()
                     # Search for similarity score
-                    faceMatch = lo_rekogn.search_by_image(imageFile=getenv('SAVED_IMAGE'))
+                    try:
+                        faceMatch = lo_rekogn.search_by_image(imageFile=getenv('SAVED_IMAGE'))
+                    except InvalidParameterException:
+                        print("No hay rostros en la imagen")
                     if faceMatch:
                         lo_rgbled.green_on()
                         #lo_rgb.green_on()
@@ -53,3 +56,4 @@ if __name__ == "__main__":
         lo_distanceSnsr.clean()  # Limpiamos los pines GPIO y salimos
         #lo_rgb.stop()
         print()
+    lo_distanceSnsr.clean()
