@@ -17,7 +17,7 @@ class RekognitionApis():
         self.threshold = 95
         # Amount of faces in API results
         self.maxFaces = 1
-
+   
     def create_collection(self, name):
         """Create a collection on AWS Rekognition to store metadata
         Args:
@@ -134,7 +134,7 @@ class RekognitionApis():
                                                                     'Bytes': image.read()},
                                                                 FaceMatchThreshold=self.threshold,
                                                                 MaxFaces=self.maxFaces)
-                except InvalidParameterException:
+                except client.exceptions.InvalidParameterException:
                     print("No hay rostro")
         elif mode == 's3':
             # TODO Get the name of the image on the bucket
